@@ -39,10 +39,10 @@ function addToCart(productId) {
   const product = products.find((p) => p.id === parseInt(productId));
   let cart = JSON.parse(sessionStorage.getItem("cart")) || [];
 
-  if (!cart.some(item => item.id === product.id)) {
+  // if (!cart.some(item => item.id === product.id)) {
     cart.push(product);
     sessionStorage.setItem("cart", JSON.stringify(cart));
-  }
+  // }
   renderCart();
 }
 
