@@ -50,10 +50,10 @@ function addToCart(productId) {
 
 // Remove item from cart
 function removeFromCart(productId) {
-	const product=products.find((p)=>p.id===parseInt(productId));
+	// const product=products.find((p)=>p.id===parseInt(productId));
 	const cart = JSON.parse(sessionStorage.getItem("cart")) || [];
 	cart.filter((p)=>p.id!==productId);
-	sessionStorage.set("cart",JSON.stringify(cart));
+	sessionStorage.setItem("cart",JSON.stringify(cart));
 	renderCart();
 }
 
