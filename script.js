@@ -36,12 +36,17 @@ function renderCart() {
 
 // Add item to cart
 function addToCart(productId) {
-	const product=products.find((p)=>p.id===parseInt(productId));
-	const cart = JSON.parse(sessionStorage.getItem("cart")) || [];
-	cart.push(product);
-	sessionStorage.setItem("cart",JSON.stringify(cart));
-	renderCart();
+    const product = products.find((p) => p.id === parseInt(productId));
+    const cart = JSON.parse(sessionStorage.getItem("cart")) || [];
+
+    // Check if product already exists in the cart by comparing IDs
+    if (!cart.some(item => item.id === product.id)) {
+        cart.push(product);
+        sessionStorage.setItem("cart", JSON.stringify(cart));
+    }
+    renderCart();
 }
+
 
 // Remove item from cart
 function removeFromCart(productId) {
